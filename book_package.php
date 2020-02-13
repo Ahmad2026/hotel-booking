@@ -24,8 +24,8 @@ include "session.php";
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="Hdesc.css">
+    <title>Book Hotel</title>
     <style type="text/css">
-        <title>Book Hotel</title>
         /* .navbar {
             position: fixed;
             top: 0;
