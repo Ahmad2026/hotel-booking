@@ -23,8 +23,9 @@ include "session.php";
 
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-    <title>Book Hotel</title>
+    <link rel="stylesheet" href="Hdesc.css">
     <style type="text/css">
+        <title>Book Hotel</title>
         /* .navbar {
             position: fixed;
             top: 0;
@@ -133,20 +134,32 @@ include "session.php";
                         </div>
 
                         <!-- Left and right controls -->
+                        <span class="carousel-control-prev-icon"></span>
                         <a class="carousel-control-prev" href="#demo" data-slide="prev">
-                            <span class="carousel-control-prev-icon"></span>
                         </a>
                         <a class="carousel-control-next" href="#demo" data-slide="next">
                             <span class="carousel-control-next-icon"></span>
+
                         </a>
                     </div>
+                    <section>
+                        <div class=" box-body" style="font-size:30px;padding:10px  ">
+                            <div class="d-flex flex-row bd-highlight mb-3">
+                                <div class="fa fa-wifi">free wifi</div>
+                                <div class="fa fa-bathtub">Bathtub</div>
+                                <i class="fas fa-parking"></i>
+                                <i class="fa fa-snowflake-o">Air conditioned</i>
+                                <i class="fa fa-taxi">Airport Transfer</i>
+                            </div>
 
+                        </div>
+
+                    </section>
                     <div class="mt-4">
                         <p>
                             <?= $row['package_details']; ?>
                         </p>
                     </div>
-
                     <div class="mt-4">
                         <p>Location<br> <?= $row['package_location']; ?></p>
                     </div>
