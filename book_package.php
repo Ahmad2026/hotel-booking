@@ -42,7 +42,7 @@ include "session.php";
         }
 
         .carousel-inner img {
-            width: 100%;
+            width: 80%;
             height: 100%;
         }
 
@@ -87,7 +87,7 @@ include "session.php";
             $row = mysqli_fetch_assoc($result);
             ?>
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-12">
                     <div class="mt-4">
                         <h4><?= $row['package_name']; ?> </h1>
 
@@ -172,8 +172,8 @@ include "session.php";
             <div class="mt-4">
                 <p>Days <?= $row['days'] ?></p>
             </div>
-            <div class="mt-4">
-                <button class="btn btn-primary"><a href="#"></a>Book Now</button>
+            <div class="mt-4 p-4">
+                <button class="btn btn-primary"><a href="#"></a>Payment</button>
             </div>
         </div>
 
