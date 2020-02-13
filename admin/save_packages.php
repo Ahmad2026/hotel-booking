@@ -32,7 +32,8 @@ $name = mysqli_real_escape_string($conn,$_POST['name']);
 $price = mysqli_real_escape_string($conn,$_POST['price']);
 $details = mysqli_real_escape_string($conn,$_POST['details']);
 $location = mysqli_real_escape_string($conn,$_POST['location']);
-$sql = "INSERT INTO packages (package_name, package_price,package_details,package_location,package_image) VALUES('{$name}',{$price},'{$details}','{$location}','{$file_name}')";
+$days = mysqli_real_escape_string($conn,$_POST['days']);
+$sql = "INSERT INTO packages (package_name, package_price,package_details,package_location,days,package_image) VALUES('{$name}',{$price},'{$details}','{$location}','{$days}','{$file_name}')";
 if(mysqli_query($conn,$sql)){
   header("location: index.php");
   

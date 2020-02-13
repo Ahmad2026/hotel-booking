@@ -24,7 +24,10 @@ include "header.php"
     <label for="exampleFormControlInput1">Location</label>
     <input name="location" type="text" class="form-control" id="exampleFormControlInput1" require>
   </div>
-
+  <div class="form-group ">
+    <label for="exampleFormControlInput1">Days</label>
+    <input name="days" type="text" class="form-control" id="exampleFormControlInput1" require>
+  </div>
   <div class="form-group">
     <label for="exampleFormControlFile1">Picture</label>
     <input name="fileToUpload" type="file" class="form-control-file" id="exampleFormControlFile1" >
