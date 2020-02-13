@@ -76,6 +76,10 @@ include "session.php";
     <div id="main-content">
         <div class="container">
             <?php
+            if (!isset($_GET['submit'])) {
+                header("Location: index.php");
+                die();
+            }
             $sql = "SELECT * FROM hotel_details WHERE hotel_Id = {$_GET['id']}";
             $result = mysqli_query($conn, $sql) or die("Quer Failed ");
             $row = mysqli_fetch_assoc($result);

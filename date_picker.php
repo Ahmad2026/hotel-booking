@@ -42,14 +42,14 @@
 							<div class="col-sm-6">
 								<div class="form-group">
 									<span class="form-label">Check In</span>
-									<input type="date" min="<?php echo date("Y-m-d", strtotime("now")) ?>" value="<?php echo date("Y-m-d", strtotime("now")) ?>" class="form-control" required>
+									<input type="date" min="<?php echo date("Y-m-d", strtotime("now")) ?>" value="<?php echo date("Y-m-d", strtotime("now")) ?>" class="form-control" name="checkin" required>
 									<!-- <input type="date" id="start" name="trip-start" value="2020-02-13" min="2020-03-13"> -->
 								</div>
 							</div>
 							<div class="col-sm-6">
 								<div class="form-group">
 									<span class="form-label">Check out</span>
-									<input class="form-control" type="date" min="<?php echo date("Y-m-d", strtotime(" +1 day")); ?>" value="<?php echo date("Y-m-d", strtotime(" +1 day")); ?>" required>
+									<input class="form-control" type="date" min="<?php echo date("Y-m-d", strtotime(" +1 day")); ?>" value="<?php echo date("Y-m-d", strtotime(" +1 day")); ?>" name="checkout" required>
 								</div>
 							</div>
 						</div>
@@ -68,7 +68,7 @@
 						</div>
 
 						<div class="form-btn">
-							<button class="submit-btn">Check availability</button>
+							<input class="btn btn-primary" type="submit" name="submit" value="SUBMIT">
 						</div>
 				</form>
 			</div>
