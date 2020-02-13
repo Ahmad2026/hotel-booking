@@ -20,6 +20,13 @@
                 <div class="himage">
                     <img src="images/h1.jpg" alt="">
                 </div>
+                <div class="rating" style="right:19px;position:absolute;top:327px">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
                 <div class="box" style="background:ff123ffe">
                     <p>On entering this charming hotel in Florence, you will immediately sense its special intimate atmosphere that makes you feel like being in your own florentine home. Each detail has been passionately chosen and each room deserves a visit. Hotel Cellai style mixes valuable antiques and original artworks with an unexpected eclectic contemporary twist. The entire House recalls the ancient ‘Palazzi’ of times past where young European aristocrats lived while discovering the beauty and the artistic mysteries of Italy.</p>
                 </div>

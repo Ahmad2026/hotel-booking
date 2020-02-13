@@ -10,6 +10,7 @@
   height: 300px;
 }
 p {
+  padding: 20px;
   padding-top: 15px;
   padding-bottom: 5px;
   font-weight: 500;
@@ -41,4 +42,12 @@ p {
 h3 {
   font-size: 50px;
   text-align: left;
+}
+.rating {
+  float: right;
+}
+.fas {
+  background-color: white;
+  color: black;
+  float: right;
 }
