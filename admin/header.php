@@ -1,4 +1,34 @@
-
+<?php
+$bname = basename($_SERVER['PHP_SELF']);
+$indexactive = "";
+$addpackagesactive = "";
+$addhotelactive = "";
+$viewpackagesactive = "";
+$title = "";
+// switch ($bname) {
+//   case "add_packages.php":
+//     $active = "active";
+//     break;
+//   case "index.php":
+//     $active = "active";
+//     break;
+//   default:
+//     break;
+// }
+if ($bname === "index.php") {
+  $indexactive = "active";
+  $title = "Index";
+} elseif ($bname === "add_packages.php") {
+  $addpackagesactive = "active";
+  $title = "Add Packages";
+} elseif ($bname === "add_hotel.php") {
+  $addhotelactive = "active";
+  $title = "Add Hotel";
+} elseif ($bname === "view_packages.php") {
+  $viewpackagesactive = "active";
+  $title = "View Packages";
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,7 +38,7 @@
   <link rel="icon" type="image/png" href="assets/img/favicon.png" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Dashboard 2
+    <?= $title; ?>
   </title>
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no" name="viewport" />
   <!--     Fonts and icons     -->
@@ -20,49 +50,33 @@
   <link href="assets/css/paper-dashboard.css?v=2.0.0" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="assets/demo/demo.css" rel="stylesheet" />
-<!-- <link rel="stylesheet" href="pagination.css"> -->
+  <!-- <link rel="stylesheet" href="pagination.css"> -->
 </head>
 
 <body class="">
   <div class="wrapper ">
     <div class="sidebar" data-color="white" data-active-color="danger">
-      <!--
-        Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
-    -->
-      <div class="logo">
-        <a href="http://www.creative-tim.com" class="simple-text logo-mini">
-          <div class="logo-image-small">
-            <img src="assets/img/logo-small.png" />
-          </div>
-        </a>
-        <a href="http://www.creative-tim.com" class="simple-text logo-normal">
-          Creative Tim
-          <!-- <div class="logo-image-big">
-            <img src="../assets/img/logo-big.png">
-          </div> -->
-        </a>
-      </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li class="active ">
+          <li class="<?php echo $indexactive ?>">
             <a href="./index.php">
               <i class="nc-icon nc-bank"></i>
               <p>Dashboard</p>
             </a>
           </li>
-          <li>
+          <li class="<?= $addhotelactive ?>">
             <a href="add_hotel.php">
               <i class="nc-icon nc-diamond"></i>
               <p>Add Hotel</p>
             </a>
           </li>
-          <li>
+          <li class="<?php echo $addpackagesactive ?>">
             <a href="add_packages.php">
               <i class="nc-icon nc-pin-3"></i>
               <p>Add Packages</p>
             </a>
           </li>
-          <li>
+          <li class="<?= $viewpackagesactive ?>">
             <a href="view_packages.php">
               <i class="nc-icon nc-bell-55"></i>
               <p>View Package</p>
@@ -86,12 +100,7 @@
               <p>Typography</p>
             </a>
           </li>
-          <li class="active-pro">
-            <a href="./upgrade.html">
-              <i class="nc-icon nc-spaceship"></i>
-              <p>Upgrade to PRO</p>
-            </a>
-          </li>
+
         </ul>
       </div>
     </div>
@@ -107,7 +116,7 @@
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="#pablo">Paper Dashboard 2</a>
+            <a class="navbar-brand" href="index.php">Admin Panel</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -136,7 +145,7 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link " href="change_password.php" id="navbarDropdownMenuLink" aria-expanded="false">
-                <i class="fa fa-key" aria-hidden="true"></i>
+                  <i class="fa fa-key" aria-hidden="true"></i>
                   <p>
                     <span class="d-lg-none d-md-block">Some Actions</span>
                   </p>

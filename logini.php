@@ -19,6 +19,7 @@ if (isset($_POST['submit'])) {
                 session_start();
                 $_SESSION['user_id'] = $row['user_id'];
                 $_SESSION['username'] = $row['username'];
+                $_SESSION['email'] = $row['email'];
                 header("location: index.php?login=success");
             }
         } else {

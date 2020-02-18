@@ -68,7 +68,7 @@ if (isset($_POST['upload'])) {
         $id = $_POST['id'];
         $sql = "INSERT INTO package_slider (package_slider_id, package_slider_image) VALUES ($id, '$file_name')";
         if (mysqli_query($conn, $sql)) {
-            header("location: add_slider_hotel.php?id={$id}");
+            header("location: add_slider_package.php?id={$id}");
         } else {
             echo mysqli_error($conn);
             echo "<div class='alert alert-danger'>Quer Failed</div>";

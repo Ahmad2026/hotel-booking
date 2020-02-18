@@ -40,6 +40,10 @@ include "session.php";
 		.price {
 			font-size: 14px;
 		}
+
+		.s-date {
+			font-weight: bold;
+		}
 	</style>
 
 </head>
@@ -60,8 +64,8 @@ include "session.php";
 					<a class="nav-link" href="package.php">Packages</a>
 				</li>
 		</div>
-		<form class="form-inline my-5 my-lg-0">
-			<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+		<form class="form-inline my-5 my-lg-0" action="search_package.php" method="post">
+			<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="query">
 			<button class="btn btnutline-success my-2 my-sm-0" type="submit">Search</button>
 		</form>
 		<a href="profile.php"><img src="img/user.png" alt="user" width='30' height='30' style='margin-left: 10px;'></a>
@@ -80,7 +84,8 @@ include "session.php";
 			}
 			$limit = 8;
 			$offset = ($page - 1) * $limit;
-			$sql = "SELECT * FROM packages LIMIT {$offset},{$limit}";
+			$d = date("y/m/d");
+			$sql = "SELECT * FROM packages WHERE starting_date > '{$d}'  LIMIT {$offset},{$limit}";
 
 			$result = mysqli_query($conn, $sql);
 
@@ -105,6 +110,9 @@ include "session.php";
 								</h5>
 								<h5 class="price">
 									<div class="font-weight-bold d-inline">Days</div> <?php echo $row['days'] ?>
+								</h5>
+								<h5 class="s-date">
+									<div class="font-weight-bold d-inline"></div> <?php echo $row['starting_date'] ?>
 								</h5>
 								<a href="book_package.php?id=<?= $row['package_id'] ?>" class="btn btn-primary">Book Now</a>
 							</div>

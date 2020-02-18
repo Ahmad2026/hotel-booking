@@ -159,7 +159,15 @@ include "session.php";
                 <p>Price <?= $row['price'] ?></p>
             </div>
             <div class="mt-4">
+                <?php
+                if (isset($_SESSION['package_id'])) {
+                    unset($_SESSION['package_id']);
+                }
+                ?>
+                <?php $_SESSION['hotel_id'] = $row['hotel_id'] ?>
+                <?php $_SESSION['check_in'] = $_GET['checkin'] ?>
 
+                <?php $_SESSION['check_out'] = $_GET['checkout'] ?>
                 <form method="post" action="paytm/PaytmKit/pgRedirect.php">
                     <input type="hidden" id="ORDER_ID" tabindex="1" maxlength="20" size="20" name="ORDER_ID" autocomplete="off" value="<?php echo  "ORDS" . rand(10000, 99999999) ?>">
 
@@ -169,10 +177,6 @@ include "session.php";
                     <input type="hidden" id="CHANNEL_ID" tabindex="4" maxlength="12" size="12" name="CHANNEL_ID" autocomplete="off" value="WEB">
                     <input type="hidden" title="TXN_AMOUNT" tabindex="10" type="text" name="TXN_AMOUNT" value="<?= $row['price'] ?>">
                     <input type="hidden" title="HOTEL_ID" tabindex="10" type="text" name="HOTEL_ID" value="<?= $row['hotel_id']; ?>">
-                    <?php $_SESSION['hotel_id'] = $row['hotel_id'] ?>
-                    <?php $_SESSION['check_in'] = $_GET['checkin'] ?>
-
-                    <?php $_SESSION['check_out'] = $_GET['checkout'] ?>
                     <input value="Make Payment" type="submit" onclick="" class="btn btn-primary">
                     <!-- * - Mandatory Fields -->
                 </form>

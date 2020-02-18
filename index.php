@@ -1,6 +1,6 @@
 <?php
-include "config.php";
 include "session.php";
+include "config.php";
 ?>
 <!DOCTYPE html>
 <html>
@@ -60,9 +60,9 @@ include "session.php";
           <a class="nav-link" href="package.php">Packages</a>
         </li>
     </div>
-    <form class="form-inline my-5 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btnutline-success my-2 my-sm-0" type="submit">Search</button>
+    <form action="search_hotel.php" method="POST" class="form-inline my-5 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="query">
+      <input type="submit" name="submit" class="btn btn-primary my-2 my-sm-0" value="Search">
     </form>
     <a href="profile.php"><img src="img/user.png" alt="user" width='30' height='30' style='margin-left: 10px;'></a>
     </div>
@@ -73,7 +73,14 @@ include "session.php";
 
     <div class="card-group">
       <?php
-      $sql = "SELECT * FROM hotel_details";
+      if (isset($_GET['page'])) {
+        $page = $_GET['page'];
+      } else {
+        $page = 1;
+      }
+      $limit = 10;
+      $offset = ($page - 1) * $limit;
+      $sql = "SELECT * FROM hotel_details LIMIT {$offset},{$limit}";
       $result = mysqli_query($conn, $sql);
 
       if (mysqli_num_rows($result) > 0) {
@@ -134,18 +141,39 @@ include "session.php";
     </div>
 
 
+
     <nav aria-label="Page navigation example">
-      <ul class="pagination justify-content-center mt-5">
-        <li class="page-item disabled">
-          <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-        </li>
-        <li class="page-item"><a class="page-link" href="http://localhost/hotel.php?#">1</a></li>
-        <li class="page-item"><a class="page-link" href="http://localhost/hotel1.php?#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item">
-          <a class="page-link" href="http://localhost/hotel1.php?#">Next</a>
-        </li>
-      </ul>
+      <?php
+
+      $sql1 = "SELECT * FROM packages";
+      $result1 = mysqli_query($conn, $sql1) or die("Query Failed.");
+
+      if (mysqli_num_rows($result1) > 0) {
+
+        $total_records = mysqli_num_rows($result1);
+
+        $total_page = ceil($total_records / $limit);
+
+        echo '<ul class="pagination justify-content-center mt-5">';
+        if ($page > 1) {
+          echo '<li class="page-item"><a class="page-link" href="index.php?page=' . ($page - 1) . '">Prev</a></li>';
+        }
+        for ($i = 1; $i <= $total_page; $i++) {
+          if ($i == $page) {
+            $active = "active";
+          } else {
+            $active = "";
+          }
+          echo '<li class="page-item ' . $active . '"><a class="page-link" href="index.php?page=' . $i . '">' . $i . '</a></li>';
+        }
+        if ($total_page > $page) {
+          echo '<li class="page-item"><a class="page-link" href="index.php?page=' . ($page + 1) . '">Next</a></li>';
+        }
+
+        echo '</ul>';
+      }
+      ?>
+
     </nav>
   </div>
 

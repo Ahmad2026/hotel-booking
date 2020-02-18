@@ -127,21 +127,21 @@ include "session.php";
 
                             ?>
                                 <div class="carousel-item <?= $active ?>">
-                                    <img src="./admin/hotel_slider/<?= $row1['package_slider_image'] ?>" alt="Los Angeles" width="100%" height="400">
+                                    <img src="./admin/package_slider/<?= $row1['package_slider_image'] ?>" alt="Los Angeles" width="100%" height="400">
                                 </div>
                             <?php $i++;
                             } ?>
                         </div>
 
                         <!-- Left and right controls -->
-                        <span class="carousel-control-prev-icon"></span>
                         <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                            <span class="carousel-control-prev-icon"></span>
                         </a>
                         <a class="carousel-control-next" href="#demo" data-slide="next">
                             <span class="carousel-control-next-icon"></span>
-
                         </a>
                     </div>
+
                     <section>
                         <div class=" box-body" style="font-size:30px;padding:10px  ">
                             <div class="d-flex flex-row bd-highlight mb-3">
@@ -172,8 +172,32 @@ include "session.php";
             <div class="mt-4">
                 <p>Days <?= $row['days'] ?></p>
             </div>
+            <div class="mt-4">
+                <p> <?= $row['starting_date'] ?></p>
+            </div>
             <div class="mt-4 p-4">
-                <button class="btn btn-primary"><a href="#"></a>Payment</button>
+                <div class="mt-4">
+                    <?php
+                    if (isset($_SESSION['hotel_id'])) {
+                        unset($_SESSION['hotel_id']);
+                    }
+                    ?>
+                    <?php $_SESSION['package_id'] = $row['package_id'] ?>
+                    <?php $_SESSION['starting_date'] = $row['starting_date'] ?>
+                    <form method="post" action="paytm/PaytmKit/pgRedirect.php">
+                        <input type="hidden" id="ORDER_ID" tabindex="1" maxlength="20" size="20" name="ORDER_ID" autocomplete="off" value="<?php echo  "ORDS" . rand(10000, 99999999) ?>">
+
+                        <input type="hidden" id="CUST_ID" tabindex="2" maxlength="12" size="12" name="CUST_ID" autocomplete="off" value="<?= $_SESSION['user_id']; ?>">
+
+                        <input type="hidden" id="INDUSTRY_TYPE_ID" tabindex="4" maxlength="12" size="12" name="INDUSTRY_TYPE_ID" autocomplete="off" value="Retail">
+                        <input type="hidden" id="CHANNEL_ID" tabindex="4" maxlength="12" size="12" name="CHANNEL_ID" autocomplete="off" value="WEB">
+                        <input type="hidden" title="TXN_AMOUNT" tabindex="10" type="text" name="TXN_AMOUNT" value="<?= $row['package_price'] ?>">
+                        <input type="hidden" title="HOTEL_ID" tabindex="10" type="text" name="HOTEL_ID" value="<?= $row['package_id']; ?>">
+                        <input value="Make Payment" type="submit" onclick="" class="btn btn-primary">
+                        <!-- * - Mandatory Fields -->
+                    </form>
+                    <!-- <a class="btn btn-primary" href="checkout_hotel.php?id=&amount=">Make Payment</a> -->
+                </div>
             </div>
         </div>
 

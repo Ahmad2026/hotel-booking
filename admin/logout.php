@@ -1,8 +1,8 @@
 <?php
 // echo $_SESSION["user_id"];
 session_start();
-session_unset();
-session_destroy();
+unset($_SESSION['admin_id']);
+// session_destroy();
 // echo "hi";
-header("Location: login.php");
-?>
+if (!isset($_SESSION['admin_id']))
+    header("Location: login.php");
