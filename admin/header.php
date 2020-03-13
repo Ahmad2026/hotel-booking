@@ -83,24 +83,17 @@ if ($bname === "index.php") {
             </a>
           </li>
           <li>
-            <a href="./user.html">
+            <a href="./view_booked_hotel.php">
               <i class="nc-icon nc-single-02"></i>
-              <p>User Profile</p>
+              <p>Booked Hotel</p>
             </a>
           </li>
           <li>
-            <a href="./tables.html">
+            <a href="./view_booked_package.php">
               <i class="nc-icon nc-tile-56"></i>
-              <p>Table List</p>
+              <p>Booked Package</p>
             </a>
           </li>
-          <li>
-            <a href="./typography.html">
-              <i class="nc-icon nc-caps-small"></i>
-              <p>Typography</p>
-            </a>
-          </li>
-
         </ul>
       </div>
     </div>
